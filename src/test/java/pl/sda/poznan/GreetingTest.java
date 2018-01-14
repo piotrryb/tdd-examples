@@ -2,11 +2,31 @@ package pl.sda.poznan;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class GreetingTest {
 
+  @Before
+  public void setUp() {
+    System.out.println("Uruchamiane przed kazdym testem");
+  }
+
+  @After
+  public void cleanUp(){
+    System.out.println("Uruchamiane po kazdym tescie");
+  }
+
+  @BeforeClass
+  public static void start(){
+    System.out.println("Uruchamiane raz");
+  }
+
   @Test
+  @Ignore
   public void should_greet_for_single_name() {
     String greet = Greeting.greet("Jan");
     assertEquals("Hello, Jan", greet);
