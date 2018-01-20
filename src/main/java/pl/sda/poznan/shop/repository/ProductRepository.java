@@ -1,10 +1,9 @@
 package pl.sda.poznan.shop.repository;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
+import pl.sda.poznan.shop.exception.ProductNotFoundException;
 import pl.sda.poznan.shop.model.Product;
-import pl.sda.poznan.shop.model.ProductByIdPredicate;
 
 public class ProductRepository {
 
@@ -19,22 +18,33 @@ public class ProductRepository {
   }
 
   public Product getById(Long id) {
-    throw new UnsupportedOperationException();
+    Optional<Product> first = this.products.stream()
+        .filter(p -> p.getId().equals(id))
+        .findFirst();
+
+    return first
+        .orElseThrow(() ->
+            new ProductNotFoundException("Nie ma produktu o takim identyfikatorze")
+        );
   }
 
   public Product getByName(String name) {
-    throw new UnsupportedOperationException();
+    return this.products
+        .stream()
+        .filter(x -> x.getName().equals(name))
+        .findFirst()
+        .orElseThrow(() -> new ProductNotFoundException("Can't find product with given name"));
   }
 
-  public void remove(Long id) {
-    throw new UnsupportedOperationException();
+  public boolean remove(Long id) {
+    return this.products.removeIf(p -> p.getId().equals(id));
   }
 
-  public void remove(Product product) {
-    throw new UnsupportedOperationException();
+  public boolean remove(Product product) {
+    return this.products.remove(product);
   }
 
   public int count() {
-    throw new UnsupportedOperationException();
+    return this.products.size();
   }
 }
