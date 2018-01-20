@@ -19,28 +19,11 @@ public class ProductRepository {
   }
 
   public Product getById(Long id) {
-    for (Product p : products) {
-      if (p.equals(id)) {
-        return p;
-      }
-    }
-
-    List<Product> collect = products
-        .stream()
-        .filter(new ProductByIdPredicate(id))
-        .collect(Collectors.toList());
-
     throw new UnsupportedOperationException();
   }
 
   public Product getByName(String name) {
-    List<Product> collect = this.products
-        .stream()
-        .filter(pr -> pr.getName().equals(name))
-        .filter(pr -> pr.getPrice() > 500)
-//        .map(product -> product.getDescription())
-        .collect(Collectors.toList());
-    return collect.get(0);
+    throw new UnsupportedOperationException();
   }
 
   public void remove(Long id) {

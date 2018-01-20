@@ -3,7 +3,7 @@ package pl.sda.poznan.shop.model;
 /**
  * Model class for representing Product
  */
-public class Product {
+public class Product implements Comparable<Product>{
 
   private Long id;
   private String name;
@@ -49,5 +49,10 @@ public class Product {
 
   public void setPrice(Double price) {
     this.price = price;
+  }
+
+  @Override
+  public int compareTo(Product o) {
+    return price.compareTo(o.getPrice());
   }
 }
