@@ -26,7 +26,7 @@ public class CartItem {
   public CartItem() {
   }
 
-  public CartItem(String name, String description, double unitPrice, int quantity) {
+  private CartItem(String name, String description, double unitPrice, int quantity) {
     this.name = name;
     this.description = description;
     this.unitPrice = unitPrice;
@@ -68,7 +68,6 @@ public class CartItem {
   public static CartItemBuilder builder() {
     return new CartItemBuilder();
   }
-
   public static class CartItemBuilder {
 
     private String name;

@@ -36,9 +36,9 @@ public class Program {
 
           // logika dodawania do koszyka
           // I sposob -- all args ctor
-          CartItem cartItem =
-              new CartItem(product.getName(), product.getDescription(), product.getPrice(),
-                  quantity);
+//          CartItem cartItem =
+//              new CartItem(product.getName(), product.getDescription(), product.getPrice(),
+//                  quantity);
 
           // Java Beans method
           CartItem cartItem1 = new CartItem();
