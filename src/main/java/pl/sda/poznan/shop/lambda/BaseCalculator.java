@@ -1,4 +1,4 @@
-package pl.sda.poznan.shop.labda;
+package pl.sda.poznan.shop.lambda;
 
 public class BaseCalculator implements Calculator{
 

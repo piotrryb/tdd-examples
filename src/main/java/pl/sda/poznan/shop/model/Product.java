@@ -55,4 +55,9 @@ public class Product implements Comparable<Product>{
   public int compareTo(Product o) {
     return price.compareTo(o.getPrice());
   }
+
+  @Override
+  public String toString() {
+    return String.format("%s - %s - %s - %.2f", id, name, description, price);
+  }
 }

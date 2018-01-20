@@ -1,7 +1,7 @@
 package pl.sda.poznan;
 
-import pl.sda.poznan.shop.labda.BaseCalculator;
-import pl.sda.poznan.shop.labda.Calculator;
+import pl.sda.poznan.shop.lambda.BaseCalculator;
+import pl.sda.poznan.shop.lambda.Calculator;
 
 public class Program {
 
