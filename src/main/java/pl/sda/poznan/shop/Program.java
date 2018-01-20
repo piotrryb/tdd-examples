@@ -2,12 +2,15 @@ package pl.sda.poznan.shop;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import pl.sda.poznan.shop.model.CartItem;
 import pl.sda.poznan.shop.model.Product;
+import pl.sda.poznan.shop.model.ShopCart;
 import pl.sda.poznan.shop.repository.ProductRepository;
 
 public class Program {
 
   public static void main(String[] args) {
+    ShopCart cart = new ShopCart();
     initializeApp();
     boolean exit = false;
     while (!exit) {
@@ -24,12 +27,41 @@ public class Program {
           break;
         }
         case 2: {
+          System.out.println("Podaj id produktu");
+          long productId = scanner.nextLong();
+          Product product = ProductRepository.getInstance().getById(productId);
+          System.out.println("Wybrales: " + product.toString());
+          System.out.println("Podaj ilosc: ");
+          int quantity = scanner.nextInt();
+
+          // logika dodawania do koszyka
+          // I sposob -- all args ctor
+          CartItem cartItem =
+              new CartItem(product.getName(), product.getDescription(), product.getPrice(),
+                  quantity);
+
+          // Java Beans method
+          CartItem cartItem1 = new CartItem();
+          cartItem1.setDescription(product.getDescription());
+          cartItem1.setName(product.getName());
+          cartItem1.setUnitPrice(product.getPrice());
+          cartItem1.setQuantity(quantity);
+
+          // Builder
+          CartItem build = CartItem.builder()
+              .description(product.getDescription())
+              .name(product.getName())
+              .build();
+
+          cart.add(build);
+        }
+        case 9: {
           System.out.println("Logowanie");
           System.out.println("Podaj login: ");
           System.out.println("Podaj haslo: ");
           break;
         }
-        case 3: {
+        case 10: {
           System.out.println("Rejestracja");
           System.out.println("Wypelnij ponizsze dane");
           System.out.println("Imie: ");
@@ -52,8 +84,10 @@ public class Program {
     System.out.println(" ");
     System.out.println("Menu: ");
     System.out.println("1. Wyswietl wszystkie produkty");
-    System.out.println("2. Logowanie");
-    System.out.println("3. Rejestracja");
+    System.out.println("2. Dodawanie do koszyka");
+
+    System.out.println("9. Logowanie");
+    System.out.println("10. Rejestracja");
     System.out.println("0. Wyjscie");
 
   }
