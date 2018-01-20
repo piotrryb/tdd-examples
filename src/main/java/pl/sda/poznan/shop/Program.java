@@ -54,6 +54,7 @@ public class Program {
               .build();
 
           cart.add(build);
+          System.out.println("Dodano element do koszyka. Aktualna wartosc zakupow to: " + cart.getSum());
         }
         case 9: {
           System.out.println("Logowanie");
