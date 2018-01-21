@@ -3,6 +3,7 @@ package pl.sda.poznan.shop;
 import java.util.Arrays;
 import java.util.Scanner;
 import pl.sda.poznan.shop.model.CartItem;
+import pl.sda.poznan.shop.model.CartItem.CartItemBuilder;
 import pl.sda.poznan.shop.model.Product;
 import pl.sda.poznan.shop.model.ShopCart;
 import pl.sda.poznan.shop.repository.ProductRepository;
@@ -48,13 +49,23 @@ public class Program {
           cartItem1.setQuantity(quantity);
 
           // Builder
+
+          CartItemBuilder builder = CartItem.builder();
+          builder.unitPrice(10D);
+          builder.description("asd");
+          builder.quantity(20);
+          CartItem build1 = builder.build();
+
           CartItem build = CartItem.builder()
               .description(product.getDescription())
               .name(product.getName())
+              .unitPrice(product.getPrice())
+              .quantity(quantity)
               .build();
 
           cart.add(build);
           System.out.println("Dodano element do koszyka. Aktualna wartosc zakupow to: " + cart.getSum());
+          break;
         }
         case 9: {
           System.out.println("Logowanie");

@@ -91,6 +91,11 @@ public class CartItem {
       return this;
     }
 
+    public CartItemBuilder quantity(int quantity) {
+      this.quantity = quantity;
+      return this;
+    }
+
     public CartItem build() {
       return new CartItem(this.name, this.description, this.unitPrice, this.quantity);
     }
