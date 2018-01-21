@@ -67,6 +67,10 @@ public class Program {
           System.out.println("Dodano element do koszyka. Aktualna wartosc zakupow to: " + cart.getSum());
           break;
         }
+        case 8: {
+          System.out.println();
+          break;
+        }
         case 9: {
           System.out.println("Logowanie");
           System.out.println("Podaj login: ");
@@ -98,6 +102,7 @@ public class Program {
     System.out.println("1. Wyswietl wszystkie produkty");
     System.out.println("2. Dodawanie do koszyka");
 
+    System.out.println("8. Zapisz produkty do pliku");
     System.out.println("9. Logowanie");
     System.out.println("10. Rejestracja");
     System.out.println("0. Wyjscie");
